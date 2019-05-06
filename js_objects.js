@@ -35,13 +35,13 @@ function nameLength(obj){
     var length = 0;
     for (let i in obj.employees){
         length = (obj.employees[i].first_name.length + obj.employees[i].last_name.length);
-        console.log(i + " - " + obj.employees[i].first_name.toUpperCase() + ", " + obj.employees[i].last_name.toUpperCase() + " - " + length);
+        console.log(i + " - " + obj.employees[i].last_name.toUpperCase() + ", " + obj.employees[i].first_name.toUpperCase() + " - " + length);
     }
     console.log("MANAGERS");
     var length = 0;
     for (let i in obj.managers){
-        length = (obj.managers[i].first_name.length + obj.managers[i].last_name.length);
-        console.log(i + " - " + obj.managers[i].first_name.toUpperCase() + ", " + obj.managers[i].last_name.toUpperCase() + " - " + length);
+        length = (obj.managers[i].last_name.length + obj.managers[i].first_name.length);
+        console.log(i + " - " + obj.managers[i].last_name.toUpperCase() + ", " + obj.managers[i].first_name.toUpperCase() + " - " + length);
     }
 }
 nameLength(users);
