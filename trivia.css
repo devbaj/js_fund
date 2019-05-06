@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+html {
+    font-size: 62.5%;
+    font-family: Nunito, Arial, sans-serif;
+    min-height: 100%;
+}
+h1 {
+    font-size: 8rem;
+}
+h2 {
+    font-size: 6rem;
+}
+h3 {
+    font-size: 4rem;
+}
+p {
+    font-size: 2rem;
+}
+.container {
+    display: grid;
+    grid-template-rows: 1fr 9fr;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "head  head  head  head"
+                         "col1  col2  col3  col4";
+    grid-gap: .2rem;
+    width: auto;
+    min-height: 100%;
+}
+.header {
+    grid-area: head;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.category {
+    display: flex;
+    flex-flow: column nowrap;
+    height: auto;
+    min-height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+}
+#cat1 {
+    grid-area: col1;
+}
+#cat2 {
+    grid-area: col2;
+}
+#cat3 {
+    grid-area: col3;
+}
+#cat4 {
+    grid-area: col4;
+}
+.qbox {
+    background-color: lightblue;
+    padding: 5rem 8rem;
+}
+.qbox:hover{
+    cursor: pointer;
+}
