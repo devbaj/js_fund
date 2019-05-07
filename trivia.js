@@ -60,7 +60,7 @@ function getTriviaData(){
             }
             answerArray.push(correctAnswer);
             shuffleAnswers(answerArray);
-            qString += "<ul id='answers'>";
+            qString += "<ul class='answer-list' id='answers'>";
             for (let j of answerArray){
                 qString += "<li class='";
                 if (j.correct){
