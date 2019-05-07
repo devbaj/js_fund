@@ -62,3 +62,23 @@ p {
 .qbox:hover{
     cursor: pointer;
 }
+.lightbox {
+    position: fixed;
+    z-index: 1;
+    margin: 0 auto;
+    padding: 3rem;
+    box-shadow: .2rem .2rem 10rem black;
+    border-radius: 1rem;
+    background-color: white;
+    text-align: center;
+    width: 75%;
+    left: 50%;
+    margin-left: -37.5%;
+    top: 30%;
+}
+.hidden {
+    display: none;
+}
+.visible {
+    display: block;
+}

@@ -26,16 +26,62 @@ function getTriviaData(){
         console.log(cat1data);
         $('#cat1-name').html(cat1data.results[0].category);
         for (let i in cat1data.results) {
-            console.log(cat1data.results[i].question);
+            // console.log(cat1data.results[i].question);
             var qscore = (parseInt(i) + 1) * 100;
             let htmlString = "<p class='cat1 qbox' qnum='" + i + "'>" + qscore + "</p>";
             $('#cat1').append(htmlString);
         }
+        function shuffleAnswers(answerArray) {
+            var loops = Math.floor(( Math.random( ) * 100) + 1);
+            for (loops; loops > 0; loops--) {
+                let fromidx = Math.floor(Math.random()*4);
+                let toidx = Math.floor(Math.random()*4);
+                let temp = answerArray[toidx];
+                answerArray[toidx] = answerArray[fromidx];
+                answerArray[fromidx] = temp;
+            }
+            console.log("shuffling")
+        }
+        $('.qbox').click(function() {
+            console.log("qbox clicked");
+            let i = $(this).attr('qnum');
+            let qString = "<p>" + cat1data.results[i].question + "</p>";
+            let answerArray = [];
+            for(let j of cat1data.results[i].incorrect_answers) {
+                let answer = {
+                    content: j,
+                    correct: false
+                }
+                answerArray.push(answer);
+            }
+            var correctAnswer = {
+                content: cat1data.results[i].correct_answer,
+                correct: true
+            }
+            answerArray.push(correctAnswer);
+            shuffleAnswers(answerArray);
+            qString += "<ul id='answers'>";
+            for (let j of answerArray){
+                qString += "<li class='";
+                if (j.correct){
+                    qString += "correct";
+                }
+                else {
+                    qString += "incorrect";
+                }
+                qString += "'>" + j.content + "</li>";
+            }
+            qString += "</ul>";
+            $('#questionbox').html(qString);
+            $('#questionbox').removeClass('hidden');
+            $('#questionbox').addClass('visible');
+
+        });
     });
     cat1data.catch(function() {
         console.log("cat1data retrieval failed");
     })
-    
+
     var cat2data = new Promise(function(resolve, reject){
         resolve($.get("https://opentdb.com/api.php?amount=10&category=23&type=multiple"));
     });
@@ -43,7 +89,7 @@ function getTriviaData(){
         console.log(cat2data);
         $('#cat2-name').html(cat2data.results[0].category);
         for (let i in cat2data.results) {
-            console.log(cat2data.results[i].question);
+            // console.log(cat2data.results[i].question);
             var qscore = (parseInt(i) + 1) * 100;
             let htmlString = "<p class='cat2 qbox' qnum='" + i + "'>" + qscore + "</p>";
             $('#cat2').append(htmlString)
@@ -60,7 +106,7 @@ function getTriviaData(){
         console.log(cat3data);
         $('#cat3-name').html(cat3data.results[0].category);
         for (let i in cat3data.results) {
-            console.log(cat3data.results[i].question);
+            // console.log(cat3data.results[i].question);
             var qscore = (parseInt(i) + 1) * 100;
             let htmlString = "<p class='cat3 qbox' qnum='" + i + "'>" + qscore + "</p>";
             $('#cat3').append(htmlString)
@@ -77,7 +123,7 @@ function getTriviaData(){
         console.log(cat4data);
         $('#cat4-name').html(cat4data.results[0].category);
         for (let i in cat4data.results) {
-            console.log(cat4data.results[i].question);
+            // console.log(cat4data.results[i].question);
             var qscore = (parseInt(i) + 1) * 100;
             let htmlString = "<p class='cat4 qbox' qnum='" + i + "'>" + qscore + "</p>";
             $('#cat4').append(htmlString)
