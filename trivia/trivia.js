@@ -62,7 +62,7 @@ function getTriviaData(){
             shuffleAnswers(answerArray);
             qString += "<ul class='answer-list' id='answers'>";
             for (let j of answerArray){
-                qString += "<li class='";
+                qString += "<li class='answer ";
                 if (j.correct){
                     qString += "correct";
                 }
@@ -75,7 +75,14 @@ function getTriviaData(){
             $('#questionbox').html(qString);
             $('#questionbox').removeClass('hidden');
             $('#questionbox').addClass('visible');
-
+            $('.answer').click(function(){
+                if ($(this).hasClass("correct")) {
+                    updateScore(player, 100);
+                }
+                else {
+                    alert("WRONG")
+                }
+            })
         });
     });
     cat1data.catch(function() {
